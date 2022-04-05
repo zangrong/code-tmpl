@@ -1,0 +1,47 @@
+/**
+ * Cetian Techs Ltd., Co. 2021
+ *
+ * @ClassName GenerateModel
+ * @Author zangrong
+ */
+package com.cetian.codetmpl.model;
+
+import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
+
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+/**
+ *@ClassName GenerateModel
+ *@Author zangrong
+ *@Date 2022/4/2 5:30 PM
+ *@Description TODO
+ */
+@Data
+public class GenerateModel {
+
+    private String packageName;
+    private String moduleName;
+    private String entityName;
+    private String entityNameCamel;
+    private String controllerMapping;
+    private String createDate;
+    private String author;
+    private String packageDescription;
+
+    public GenerateModel(String packageName, String moduleName, String entityName, String author, String packageDescription) {
+        this.packageName = packageName;
+        this.moduleName = moduleName;
+        this.entityName = entityName;
+        this.author = author;
+        this.packageDescription = packageDescription;
+        this.entityNameCamel = StringUtils.uncapitalize(entityName);
+        String[] entityArray = StringUtils.splitByCharacterTypeCamelCase(entityName);
+        List<String> entityNameList = List.of(entityArray).stream().map(StringUtils::lowerCase).collect(Collectors.toList());
+        this.controllerMapping = "/" + StringUtils.join(entityNameList, '/');
+        this.createDate = DateFormatUtils.ISO_8601_EXTENDED_DATETIME_FORMAT.format(new Date());
+    }
+}
