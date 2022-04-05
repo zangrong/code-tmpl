@@ -20,10 +20,7 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  *@ClassName CodeTmplApplication
@@ -53,7 +50,6 @@ public class CodeTmplApplication {
         /* You usually do these for MULTIPLE TIMES in the application life-cycle:   */
 
         /* Create a data-model */
-
         GenerateModel model = new GenerateModel("com.cetian.ctsingle.module", "survey",
                 "SurveyAnsr", "zangrong", "Cetian Techs Ltd., Co. 2022");
 
