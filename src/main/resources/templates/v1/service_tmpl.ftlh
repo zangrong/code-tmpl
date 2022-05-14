@@ -65,9 +65,9 @@ public class ${entityName}Service {
         return ApiResponse.success().withData(PageInfo.of(voList, page.getTotalElements()));
     }
 
-    public ApiResponse<${entityName}ListVo> detail(int id) {
+    public ApiResponse<${entityName}DetailVo> detail(int id) {
         ${entityName}Eo ${entityNameCamel}Eo = ${entityNameCamel}Dao.findById(id).orElseThrow(()->new NotFoundException("未找到"));
-        ${entityName}ListVo ${entityNameCamel}ListVo = ${entityName}Mapper.INSTANCE.eoToListVo(${entityNameCamel}Eo);
+        ${entityName}DetailVo ${entityNameCamel}DetailVo = ${entityName}Mapper.INSTANCE.eoToDetailVo(${entityNameCamel}Eo);
         return ApiResponse.success().withData(${entityNameCamel}ListVo);
     }
 

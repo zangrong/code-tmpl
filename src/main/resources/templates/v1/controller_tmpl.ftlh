@@ -37,7 +37,7 @@ public class ${entityName}Controller {
     }
 
     @GetMapping("/detail")
-    public ApiResponse<${entityName}ListVo> detail(@RequestParam int id){
+    public ApiResponse<${entityName}DetailVo> detail(@RequestParam int id){
         return ${entityNameCamel}Service.detail(id);
     }
 

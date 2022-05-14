@@ -50,8 +50,8 @@ public class CodeTmplApplication {
         /* You usually do these for MULTIPLE TIMES in the application life-cycle:   */
 
         /* Create a data-model */
-        GenerateModel model = new GenerateModel("com.cetian.ctsingle.module", "survey",
-                "SurveyAnsr", "zangrong", "Cetian Techs Ltd., Co. 2022");
+        GenerateModel model = new GenerateModel("com.cetian.ctsingle.module", "evaluation",
+                "Evaluation", "zangrong", "Cetian Techs Ltd., Co. 2022");
 
         generate(model, cfg);
 

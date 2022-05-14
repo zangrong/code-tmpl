@@ -25,5 +25,7 @@ public interface ${entityName}Mapper {
 
     ${entityName}ListVo eoToListVo(${entityName}Eo eo);
 
+    ${entityName}DetailVo eoToDetailVo(${entityName}Eo eo);
+
     ${entityName}Eo createDtoToEo(${entityName}CreateDto dto);
 }
