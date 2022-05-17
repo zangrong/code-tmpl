@@ -68,7 +68,7 @@ public class ${entityName}Service {
     public ApiResponse<${entityName}DetailVo> detail(int id) {
         ${entityName}Eo ${entityNameCamel}Eo = ${entityNameCamel}Dao.findById(id).orElseThrow(()->new NotFoundException("未找到"));
         ${entityName}DetailVo ${entityNameCamel}DetailVo = ${entityName}Mapper.INSTANCE.eoToDetailVo(${entityNameCamel}Eo);
-        return ApiResponse.success().withData(${entityNameCamel}ListVo);
+        return ApiResponse.success().withData(${entityNameCamel}DetailVo);
     }
 
     public ApiResponse create(${entityName}CreateDto dto) {
