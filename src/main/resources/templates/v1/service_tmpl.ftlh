@@ -26,7 +26,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +56,7 @@ public class ${entityName}Service {
             List<Predicate> list = new ArrayList<>();
             if (StringUtils.isNotBlank(dto.getText())) {
                 List<Predicate> orList = new ArrayList<>();
-                JpaUtil.like(StringUtil.embraceLike(dto.getText()), "name", orList, root, cb);
+                    JpaUtil.like(root.get( "name"), StringUtil.embraceLike(dto.getText()),orList, cb);
                 list.add(cb.or(orList.stream().toArray(Predicate[]::new)));
             }
             return JpaUtil.listToPredicate(list, cb, true);
@@ -65,7 +65,7 @@ public class ${entityName}Service {
         return ApiResponse.success().withData(PageInfo.of(voList, page.getTotalElements()));
     }
 
-    public ApiResponse<${entityName}DetailVo> detail(int id) {
+    public ApiResponse<${entityName}DetailVo> detail(${keyTypeStr} id) {
         ${entityName}Eo ${entityNameCamel}Eo = ${entityNameCamel}Dao.findById(id).orElseThrow(()->new NotFoundException("未找到"));
         ${entityName}DetailVo ${entityNameCamel}DetailVo = ${entityName}Mapper.INSTANCE.eoToDetailVo(${entityNameCamel}Eo);
         return ApiResponse.success().withData(${entityNameCamel}DetailVo);
@@ -78,13 +78,13 @@ public class ${entityName}Service {
         return ApiResponse.success();
     }
 
-    public ApiResponse delete(int id) {
+    public ApiResponse delete(${keyTypeStr} id) {
         log.warn("delete=[{}]", id);
         ${entityNameCamel}Dao.deleteById(id);
         return ApiResponse.success();
     }
 
-    public ApiResponse deleteAll(List<Integer> ids) {
+    public ApiResponse deleteAll(List<${keyTypeStr}> ids) {
         log.warn("deleteAll=[{}]", ids);
         ${entityNameCamel}Dao.deleteAllById(ids);
         return ApiResponse.success();

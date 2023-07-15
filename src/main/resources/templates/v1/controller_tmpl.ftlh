@@ -37,7 +37,7 @@ public class ${entityName}Controller {
     }
 
     @GetMapping("/detail")
-    public ApiResponse<${entityName}DetailVo> detail(@RequestParam int id){
+    public ApiResponse<${entityName}DetailVo> detail(@RequestParam ${keyTypeStr} id){
         return ${entityNameCamel}Service.detail(id);
     }
 
@@ -52,12 +52,12 @@ public class ${entityName}Controller {
     }
 
     @DeleteMapping("/delete")
-    public ApiResponse delete(@RequestParam int id){
+    public ApiResponse delete(@RequestParam ${keyTypeStr} id){
         return ${entityNameCamel}Service.delete(id);
     }
 
     @DeleteMapping("/delete/all")
-    public ApiResponse deleteAll(@RequestBody List<Integer> ids){
+    public ApiResponse deleteAll(@RequestBody List<${keyTypeStr}> ids){
         return ${entityNameCamel}Service.deleteAll(ids);
     }
 

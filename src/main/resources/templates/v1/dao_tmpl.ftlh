@@ -18,6 +18,6 @@ import java.util.Optional;
  * @date ${createDate}
  * @Description
 */
-public interface ${entityName}Dao extends JpaRepository<${entityName}Eo, Integer>, JpaSpecificationExecutor<${entityName}Eo> {
+public interface ${entityName}Dao extends JpaRepository<${entityName}Eo, ${keyTypeStr}>, JpaSpecificationExecutor<${entityName}Eo> {
 
 }

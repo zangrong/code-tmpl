@@ -17,5 +17,5 @@ import lombok.Data;
 */
 @Data
 public class ${entityName}UpdateDto {
-    private int id;
+    private ${keyTypeStr} id;
 }

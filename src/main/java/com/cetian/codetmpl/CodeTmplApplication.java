@@ -50,8 +50,8 @@ public class CodeTmplApplication {
         /* You usually do these for MULTIPLE TIMES in the application life-cycle:   */
 
         /* Create a data-model */
-        GenerateModel model = new GenerateModel("com.cetian.ctsingle.module", "evaluation",
-                "Evaluation", "zangrong", "Cetian Techs Ltd., Co. 2022");
+        GenerateModel model = new GenerateModel("com.cetian.ctsingle.module", "acnt",
+                "QiweiAcnt", String.class, "zangrong", "Wsjm Techs Ltd., Co. 2023");
 
         generate(model, cfg);
 
@@ -59,8 +59,11 @@ public class CodeTmplApplication {
 
     private static void generate(GenerateModel model, Configuration cfg) throws Exception{
 
-        String generateDatetime = DateFormatUtils.ISO_8601_EXTENDED_DATETIME_FORMAT.format(new Date());
-        String outDir = String.format("./codeout/%s/%s", generateDatetime, model.getModuleName());
+        String generateDatetime = DateFormatUtils.format(new Date(), "yyyyMMdd-HHmmss");
+        // 多层package目录
+        String moduleName = StringUtils.lowerCase(StringUtils.replaceAll(model.getModuleName(), "\\.", "/"));
+        String outDir = String.format("./codeout/%s/%s", generateDatetime, moduleName);
+//        FileUtils.forceDelete(new File(outDir));
         FileUtils.forceMkdir(new File(outDir));
 
         List<GenerateTypeEnum> enumList = EnumUtils.getEnumList(GenerateTypeEnum.class);

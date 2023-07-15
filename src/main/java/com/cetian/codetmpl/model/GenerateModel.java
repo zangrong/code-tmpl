@@ -31,14 +31,25 @@ public class GenerateModel {
     private String createDate;
     private String author;
     private String packageDescription;
+    private Class keyType;
+    private String keyTypeStr;
 
-    public GenerateModel(String packageName, String moduleName, String entityName, String author, String packageDescription) {
+    public GenerateModel(String packageName, String moduleName, String entityName, Class keyType, String author, String packageDescription) {
         this.packageName = packageName;
         this.moduleName = moduleName;
         this.entityName = entityName;
+        this.keyType = keyType;
         this.author = author;
         this.packageDescription = packageDescription;
         this.entityNameCamel = StringUtils.uncapitalize(entityName);
+        if (this.keyType == String.class){
+            this.keyTypeStr = "String";
+        }else if(this.keyType == Integer.class){
+            this.keyTypeStr = "Integer";
+        }else{
+            this.keyTypeStr = "Long";
+        }
+
         String[] entityArray = StringUtils.splitByCharacterTypeCamelCase(entityName);
         List<String> entityNameList = List.of(entityArray).stream().map(StringUtils::lowerCase).collect(Collectors.toList());
         this.controllerMapping = "/" + StringUtils.join(entityNameList, '/');
