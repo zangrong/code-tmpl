@@ -51,7 +51,7 @@ public class ${entityName}Eo {
     @Column(length = 200)
     private String remark;// 备注
 
-    @Type( type = CtConstant.JSON )
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column( columnDefinition = CtConstant.JSON )
     private List<String> modules;
     @CreatedDate
