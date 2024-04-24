@@ -32,7 +32,6 @@ import java.util.List;
 @Entity
 @Table(name = "ct_${entityNameCamel}")
 @EntityListeners(AuditingEntityListener.class)
-@TypeDefs({ @TypeDef(name = CtConstant.JSON, typeClass = JsonStringType.class) })
 @ToString(of = {"id", "name", "code"})
 public class ${entityName}Eo {
 
@@ -52,7 +51,7 @@ public class ${entityName}Eo {
     private String remark;// 备注
 
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column( columnDefinition = CtConstant.JSON )
+    @Column( columnDefinition = CtConstant.COLUMN_DEFINITION_JSON )
     private List<String> modules;
     @CreatedDate
     private Date createDate;
